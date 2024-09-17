@@ -59,6 +59,8 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests((requests) -> requests
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers(HttpMethod.GET, "/borrowables/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/borrowables/**/borrow").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/borrowables/**/return").authenticated()
                         .requestMatchers(HttpMethod.POST, "/borrowables/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/borrowables/**").hasAnyRole("ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/borrowables/**").hasAnyRole("ADMIN")
